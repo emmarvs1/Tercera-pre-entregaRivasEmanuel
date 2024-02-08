@@ -12,7 +12,7 @@ def ver_pizzas(request):
     return render(request, "aplicacion/pizzas.html", contexto)
 
 def ver_empandas(request):
-    contexto = {'empanadas': EmpanadasForm.objects.all()}
+    contexto = {'empanadas': Empanadas.objects.all()}
     return render(request, "aplicacion/empanadas.html", contexto)
 
 def ver_bebidas(request):
