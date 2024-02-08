@@ -6,10 +6,9 @@
     
 
 {% block contenido %}
-<form action="{% url 'buscarPizzas' %}" method="get">
-    {% csrf_token %}
-
-    <p>Pizza/Empanada a buscar: <input type="text" name="buscar" id="buscar"></p>
-    <input type="submit" value="Buscar">
+<form method="get">
+    <input type="text" name="buscar" placeholder="Buscar pizza" value="{{ query }}">
+    <button type="submit">Buscar</button>
 </form>
+
 {% endblock contenido %}

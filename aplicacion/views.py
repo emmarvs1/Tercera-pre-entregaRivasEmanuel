@@ -21,14 +21,14 @@ def ver_bebidas(request):
 def ver_clientes(request):
     return render(request, "aplicacion/clientes.html")
 
-def ver_pizzaForm(request):
+def pizzaForm(request):
     if request.method == "POST":
         miFormulario = PizzaForm(request.POST)  
         if miFormulario.is_valid():
             pizza_nombre = miFormulario.cleaned_data.get("pizza")
             pizza_precio = miFormulario.cleaned_data.get("precio")
-            precio = Pizza(nombre=pizza_nombre, precio=pizza_precio)  
-            precio.save()
+            pizza = Pizza(nombre=pizza_nombre, precio=pizza_precio)  
+            pizza.save()
             return render(request, "aplicacion/home.html")
 
 
@@ -73,10 +73,10 @@ def ver_clientes(request):
 
     return render(request, "aplicacion/clientesForm.html", {"form": miForm })
 
+def buscar(request):
+    return render(request, "aplicacion/buscarPizzas.html")
+
 def buscarPizzas(request):
-    patron = request.GET.get("buscar", "")  # Obtiene el valor de "buscar" o una cadena vacía si no está presente
-    if patron:
-        pizzas = Pizza.objects.filter(nombre__icontains=patron)  # Filtra los objetos del modelo Pizza
-        contexto = {"pizzas": pizzas}
-        return render(request, "aplicacion/pizzas.html", contexto)
-    return HttpResponse("No se ingresaron patrones de busqueda")
+    query = request.GET.get('buscar', '')
+    pizzas = Pizza.objects.filter(nombre__icontains=query)
+    return render(request, 'buscar_pizzas.html', {'pizzas': pizzas, 'query': query})

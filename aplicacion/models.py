@@ -23,11 +23,12 @@ def __str__(self):
     
 class Clientes(models.Model):
     nombre = models.CharField(max_length=100)
-    correo = models.EmailField()
-    telefono = models.CharField(max_length=20)
-    direccion = models.CharField(max_length=200)
+    apellido = models.CharField(max_length=100)
+    email = models.EmailField(max_length=20)
+    comentario = models.TextField()
     
 def __str__(self):
         return self.nombre
+    
     
     
