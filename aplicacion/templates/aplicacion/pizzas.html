@@ -1,0 +1,31 @@
+{% extends 'aplicacion/home.html' %}
+
+{% block titulo %}
+    <h1 class="mb-5">Pizzas</h1>
+{% endblock titulo %}
+    
+
+{% block contenido %}
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre de la pizza</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for c in pizza  %}
+            <tr>
+                <td>{{ c.id }}</td>
+                <td>{{ c.nombre }}</td>
+                <td>{{ c.precio }}</td>
+            </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+{% endblock contenido %}
+
+
+    
