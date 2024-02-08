@@ -74,9 +74,9 @@ def ver_clientes(request):
     return render(request, "aplicacion/clientesForm.html", {"form": miForm })
 
 def buscarPizzas(request):
-    if request.GET["buscar"]:
-        patron = request.GET["buscar"]
-        pizzas = buscarPizzas.objects.filter(nombre__icontains=patron)
-        contexto = {"pizzas": pizzas }
+    patron = request.GET.get("buscar", "")  # Obtiene el valor de "buscar" o una cadena vacía si no está presente
+    if patron:
+        pizzas = Pizza.objects.filter(nombre__icontains=patron)  # Filtra los objetos del modelo Pizza
+        contexto = {"pizzas": pizzas}
         return render(request, "aplicacion/pizzas.html", contexto)
     return HttpResponse("No se ingresaron patrones de busqueda")
