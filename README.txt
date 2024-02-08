@@ -12,4 +12,4 @@
   - Clientes
 
 - Orden de prueba de la aplicacion 
-  - Crear cursos: localhost:8000/aplicacion/
+  localhost:8000/aplicacion/
